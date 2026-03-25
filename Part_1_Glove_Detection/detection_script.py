@@ -12,7 +12,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--input", default="input_images")
+parser.add_argument("--input", default="dataset/test/images")
 parser.add_argument("--output", default="output")
 parser.add_argument("--confidence", type=float, default=0.3)
 parser.add_argument("--model", default="model/best.pt")
@@ -28,7 +28,6 @@ MODEL_PATH = args.model
 # ---------------- PATH SETUP ----------------
 
 LOG_DIR = "logs"
-model = YOLO(MODEL_PATH)
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -112,3 +111,10 @@ for img_name in tqdm(os.listdir(INPUT_DIR)):
         "w"
     ) as f:
         json.dump(log, f, indent=2)
+
+
+# ---------------- VALIDATION METRICS ----------------
+
+# Validate the model
+metrics = model.val(save_json=True)
+print(metrics.box.map) 

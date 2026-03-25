@@ -1,0 +1,15 @@
+{
+  "filename": "w015_jpg.rf.d74400b35a80ec415f58886fd9e6f3df.jpg",
+  "detections": [
+    {
+      "label": "glove",
+      "confidence": 0.7940788269042969,
+      "bbox": [
+        126,
+        254,
+        409,
+        418
+      ]
+    }
+  ]
+}
